@@ -1,0 +1,27 @@
+
+public class Prac2 {
+	public static void main(String[] args) {
+		int[] arr= {2,67,78,89,90,77};
+		int target=90;
+		System.out.println(linearSearch(arr,target,2,5));
+		
+	}
+     static int linearSearch(int[] arr,int target,int start,int end) {
+    	 
+    	 if(arr.length==0) {
+    		 return -1;
+    	 }
+		for(int i=start; i<end;i++) {
+			int element=arr[i];
+			if(element==target) {
+				return i;
+			}
+					
+			
+		}
+		return -1; 
+    	 
+    	 
+     }
+ 
+}
