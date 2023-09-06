@@ -1,0 +1,102 @@
+//package com.project.jpa;
+
+//import java.util.Iterator;
+//import java.util.List;
+//import java.util.Optional;
+//import java.util.function.Consumer;
+
+
+
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.context.ApplicationContext;
+
+//import com.project.jpa.dao.UserRepos;
+//import com.project.jpa.entities.User;
+
+//@SpringBootApplication
+//public class JpaApplication {
+
+//	public static void main(String[] args) {
+//		SpringApplication.run(JpaApplication.class, args);
+//		ApplicationContext context=SpringApplication.run(JpaApplication.class);
+ //       UserRepos user = context.getBean(UserRepos.class);
+          
+//          User u=new User(); 
+//          u.setName("RAM");
+//          u.setCity("Delhi");
+//          u.setStatus("Java Developer");
+          
+          
+//          User u1=user.save(u);
+//          System.out.println(u1);
+           
+          // create object of user
+          
+//          User user1=new User();
+//          user1.setName("Roli");
+//          user1.setCity("Ajit Nagar");
+//          user1.setStatus("Java is Life");
+//          
+//          User user2=new User();
+//          user2.setName("Anuj");
+//          user2.setCity("Ajit Nagar");
+//          user2.setStatus("Java is my Life");
+//      // saving multiple objects    
+//List<User> users=List.of(user1,user2);
+//     Iterable<User> result=   user.saveAll(users);
+//     
+//     result.forEach(user->{
+//    	 System.out.println(user);
+//    	 
+    	 
+  //   });
+     
+//		User resultuser=user.save(user2);
+	
+//          System.out.println("saved user"+resultuser);
+     //  System.out.println("Done");
+	
+//	       // update the user of id 102
+//        
+//            Optional<User> optional=    user.findById( 102);
+//            User user1=optional.get();
+//            
+//            user1.setName("Joginder");
+//           User result= user.save(user1);
+//             System.out.println(result); 	
+//	
+        
+//        // How to get your data 
+        Iterable<User> itr=user.findAll();
+        Iterator<User> iterator=itr.iterator();
+//        while(iterator.hasNext()) {
+//        	User user1=iterator.next();
+//        	System.out.println(user1);
+        
+           
+//        }
+//        //get 2nd way
+////     
+//      itr.forEach(new Consumer<User> () {
+//
+//		@Override
+//		public void accept(User t) {
+//			System.out.print(t);
+//			// TODO Auto-generated method stub
+//			
+//		}
+//    	  
+//    	  
+//      }
+//    		  
+//    		  
+//    		  
+//    		  );
+        
+        //Delete the user element
+      //  user.deleteById(102);
+      //  System.out.println("Deleted");
+//}
+
+//}
