@@ -1,0 +1,170 @@
+//Application class
+package com.project.jpa;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.project.jpa.dao.UserRepos;
+import com.project.jpa.entities.User;
+
+@SpringBootApplication
+public class JpaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JpaApplication.class, args);
+		ApplicationContext context=SpringApplication.run(JpaApplication.class);
+          UserRepos user = context.getBean(UserRepos.class);
+          
+          User u=new User(); 
+          u.setName("RAM");
+          u.setCity("Delhi");
+          u.setStatus("Java Developer");
+          
+          
+          User u1=user.save(u);
+          System.out.println(u1);
+          
+	
+	}
+
+}
+
+//repository class
+
+package com.project.jpa.dao;
+
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.project.jpa.entities.User;
+
+public interface UserRepos extends CrudRepository<User,Integer>{
+             	
+                      
+}
+
+
+//entity class
+package com.project.jpa.entities;
+
+import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
+public class User {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private int Id;
+	
+	
+	private String name;
+	
+	private String city;
+	
+	private String status;
+	public User(int id, String name, String city, String status) {
+		super();
+		Id = id;
+		this.name = name;
+		this.city = city;
+		this.status = status;
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+		@Override
+	public String toString() {
+		return "User [Id=" + Id + ", name=" + name + ", city=" + city + ", status=" + status + "]";
+	}
+
+	
+	
+}
+//pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.springsts</groupId>
+	<artifactId>firstsproject</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Jpa</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
